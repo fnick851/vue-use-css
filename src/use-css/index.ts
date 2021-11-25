@@ -1,7 +1,7 @@
 import { onUnmounted } from "vue";
 
-function transformCss(css: string, cssSelector: string) {
-  return css.replace(/& ([^{}])+{/g, (match, cssRule) => {
+function transformCss(css: string, cssSelector: string): string {
+  return css.replace(/& ([^{}])+{/g, (match) => {
     return (
       match
         .split(",") // multiple rules on the same line split by a comma
@@ -34,9 +34,12 @@ function transformCss(css: string, cssSelector: string) {
 }
 
 declare global {
-  var __VUE_USE_CSS_NAMESPACE_COUNT__: number;
+  interface Window {
+    __VUE_USE_CSS_NAMESPACE_COUNT__: number;
+  }
 }
-function getCssSope() {
+
+function getCssSope(): { attrName: string; attrValue: number } {
   if (!window.__VUE_USE_CSS_NAMESPACE_COUNT__) {
     window.__VUE_USE_CSS_NAMESPACE_COUNT__ = 1;
   } else {
@@ -47,7 +50,7 @@ function getCssSope() {
   return { attrName, attrValue };
 }
 
-export default function useCss(css: string) {
+function useCss(css: string): { [key: string]: number } {
   const { attrName, attrValue } = getCssSope();
 
   const transformedCss = transformCss(css, `[${attrName}='${attrValue}']`);
@@ -65,3 +68,5 @@ export default function useCss(css: string) {
     [attrName]: attrValue,
   };
 }
+
+export default useCss;

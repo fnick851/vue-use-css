@@ -1,6 +1,6 @@
 import { onUnmounted } from "vue";
 function transformCss(css, cssSelector) {
-  return css.replace(/& ([^{}])+{/g, (match, cssRule) => {
+  return css.replace(/& ([^{}])+{/g, (match) => {
     return match.split(",").map((cssSplit) => {
       cssSplit = cssSplit.trim();
       if (cssSplit.indexOf("&") === -1)
