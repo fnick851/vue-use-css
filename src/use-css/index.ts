@@ -54,7 +54,6 @@ function useCss(css: string): { [key: string]: number } {
   const { attrName, attrValue } = getCssSope();
 
   const transformedCss = transformCss(css, `[${attrName}='${attrValue}']`);
-  console.log(transformedCss);
 
   const styleElement = document.createElement("style");
   styleElement.textContent = transformedCss;
