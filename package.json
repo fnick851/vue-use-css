@@ -12,6 +12,7 @@
     "CSS",
     "ScopedCSS"
   ],
+  "main": "./dist/vue-use-css.es.js",
   "files": [
     "dist"
   ],
