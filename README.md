@@ -6,7 +6,7 @@ It is based on the [kremling](https://github.com/CanopyTax/kremling) library for
 
 ## How to use
 
-You need to pass the CSS as a string to the imported hook. For writing scoped CSS, it works the same way as kremling does. You need to prepend any individual CSS selector with the `&` symbol. Otherwise, it's all the same as regular CSS.
+You need to pass the CSS as a string to the imported hook. For writing scoped CSS, it works the same way as kremling does. You need to prepend any individual CSS selector with the `&` symbol to make it scoped. Or it will become regular global CSS.
 
 For example:
 
@@ -16,14 +16,30 @@ import useCss from "./vue-use-css";
 
 const cssScope = useCss(css);
 const css = /*css*/ `
+/* global style */
+.div {
+  margin: 5px;
+}
+/* scoped styles */
 & .my-root {
   border: 1px solid red;
 }
 & .inner-1, & .inner-2 {
   font-size: 30px;
 }
-& .my-root button {
+& .my-root #the-btn {
   color: blue;
+}
+& a {
+  color: yellow;
+}
+& a:hover {
+  color: hotpink;
+}
+@media (max-width: 500px) {
+  & a {
+    display: none;
+  }
 }
 `;
 </script>
@@ -32,13 +48,14 @@ const css = /*css*/ `
   <div v-bind="cssScope" class="my-root">
     <div class="inner-1">hi</div>
     <div class="inner-2">hello</div>
-    <button>click me</button>
+    <button id="the-btn">click me</button>
+    <a>link</a>
   </div>
 </template>
 ```
 
-The prrocessed CSS will be scoped to the element where you place the `v-bind="cssScope"` directive, based on a generated unique `data-` attribute.
+The CSS output will be scoped to the element where you place the `v-bind="cssScope"` directive, based on a generated unique `data-` attribute.
 
 Some setup allows you to import the content of a `.css` file as a string. So you could also use a separate CSS file if you want.
 
-If you write the CSS string in template literal, it is recommended to use an extension such as [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) to add CSS syntax highlight.
+If you write the CSS string with template literal, it is recommended to use an extension such as [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) to add CSS syntax highlight.
