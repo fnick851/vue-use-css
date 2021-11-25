@@ -1,11 +1,42 @@
-# Vue 3 + Typescript + Vite
+# vue-use-css
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a minimal Vue hook that processes and generates scoped CSS at runtime, making it easy to bundle any CSS into JS file using any bundler. You can use it to build component (or micro frontend) that bring its own scoped CSS that will be cleaned up once the component is unmounted.
 
-## Recommended IDE Setup
+It is based on the [kremling](https://github.com/CanopyTax/kremling) library for React, but adapted for Vue using TypeScript. It does not include the class name helpers like Kremling does, since Vue has built-in equivalents .
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## How to use
 
-## Type Support For `.vue` Imports in TS
+You need to pass CSS as a string to the exported hook. For writing scoped CSS, it works exactly the same way as kremling does. You need to prepend any individual CSS selector with the `&` symbol.
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+For example:
+
+```vue
+<script setup lang="ts">
+import useCss from "./vue-use-css";
+
+const cssScope = useCss(css);
+const css = /*css*/ `
+& .my-root {
+  border: 1px solid red;
+}
+& .inner-1, & .inner-2 {
+  font-size: 30px;
+}
+& .my-root button {
+  color: blue;
+}
+`;
+</script>
+
+<template>
+  <div v-bind="cssScope" class="my-root">
+    <div class="inner-1">hi</div>
+    <div class="inner-2">hello</div>
+    <button>click me</button>
+  </div>
+</template>
+```
+
+The prrocessed CSS will be scoped to the element where you place the `v-bind="cssScope"` directive, based on a generated unique `data-` attribute.
+
+Some setup allows you to import the content of a `.css` file as a string. So you could also use a separate CSS file if you want.

@@ -1,6 +1,7 @@
 {
   "name": "vue-use-css",
   "version": "1.0.0",
+  "author": "Noah Song <hanlun.song@gmail.com> (https://noah-song.com/)",
   "files": [
     "dist"
   ],
