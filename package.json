@@ -1,7 +1,12 @@
 {
   "name": "vue-use-css",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "license": "MIT",
   "author": "Noah Song <hanlun.song@gmail.com> (https://noah-song.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fnick851/vue-use-css"
+  },
   "files": [
     "dist"
   ],
