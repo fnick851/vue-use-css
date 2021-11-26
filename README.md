@@ -58,7 +58,7 @@ const css = /*css*/ `
 </template>
 ```
 
-Contrary to Vue SFC's `<style scoped>` block, the CSS output's scope is the element where you place the `v-bind="cssScope"` directive, based on a generated unique `data-` attribute. Scoped rules won't leak outside of the component. But the rules applied on a parent element will affect its children, just like how regular CSS behaves. This is a useful behavior for many.
+Contrary to Vue SFC's `<style scoped>` block, the CSS output's scope is the element where you place the `v-bind="cssScope"` directive, based on a generated unique `data-` attribute. Scoped rules applied on the root element will affect its children, just like how regular CSS behaves. This is a useful behavior for many.
 
 Some setup allows you to import the content of a `.css` file as a string. So you could also use a separate CSS file if you want.
 
