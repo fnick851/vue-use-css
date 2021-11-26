@@ -6,6 +6,10 @@ It is based on the [kremling](https://github.com/CanopyTax/kremling) library for
 
 ## How to use
 
+```sh
+npm install vue-use-css
+```
+
 You need to pass the CSS as a string to the imported composition function. For writing scoped CSS, it works the same way as kremling does. You need to prepend any individual CSS selector with the `&` symbol to make it scoped. Or it will become regular global CSS.
 
 For example:
