@@ -16,9 +16,9 @@ For example:
 
 ```vue
 <script setup lang="ts">
-import useCss from "./vue-use-css";
+import useCss from './vue-use-css'
 
-const cssScope = useCss(css);
+const cssScope = useCss(css)
 const css = /*css*/ `
 /* global style */
 .div {
@@ -45,7 +45,7 @@ const css = /*css*/ `
     display: none;
   }
 }
-`;
+`
 </script>
 
 <template>
@@ -58,7 +58,7 @@ const css = /*css*/ `
 </template>
 ```
 
-The CSS output will be scoped to the element where you place the `v-bind="cssScope"` directive, based on a generated unique `data-` attribute.
+Contrary to Vue SFC's `<style scoped>` block, the CSS output's scope is the element where you place the `v-bind="cssScope"` directive, and also cascades to its children (as in **C**ascading **S**tyle **S**heets), based on a generated unique `data-` attribute. This is an intentional choice. Cascading is a useful feature for many.
 
 Some setup allows you to import the content of a `.css` file as a string. So you could also use a separate CSS file if you want.
 
