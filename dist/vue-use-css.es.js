@@ -32,7 +32,6 @@ function getCssSope() {
 function useCss(css) {
   const { attrName, attrValue } = getCssSope();
   const transformedCss = transformCss(css, `[${attrName}='${attrValue}']`);
-  console.log(transformedCss);
   const styleElement = document.createElement("style");
   styleElement.textContent = transformedCss;
   styleElement.setAttribute("data-css-for", `[${attrName}='${attrValue}']`);

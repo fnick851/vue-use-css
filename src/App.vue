@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import useCss from "./use-css";
-import css from "./App.css";
-import Button from "./Button.vue";
-import Texts from "./Texts.vue";
+import { ref } from 'vue'
+import useCss from './use-css'
+import css from './App.css'
+import Button from './Button.vue'
+import Texts from './Texts.vue'
 
-const cssScope = useCss(css);
-const show = ref(true);
+const cssScope = useCss(css)
+const show = ref(true)
 </script>
 
 <template>

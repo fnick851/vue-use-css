@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import useCss from "./use-css";
+import useCss from './use-css'
 const css = /*css*/ `
 & p {
   color: yellow;
   font-size: 30px;
   background-color: blue;
 }
-`;
-const cssScope = useCss(css);
+`
+const cssScope = useCss(css)
 </script>
 
 <template>
