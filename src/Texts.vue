@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import useCss from "./use-css";
 const css = /*css*/ `
-& button {
-  border: 2px solid red;
+& p {
+  color: yellow;
+  font-size: 30px;
+  background-color: blue;
 }
 `;
 const cssScope = useCss(css);
 </script>
 
 <template>
-  <button v-bind="cssScope">Toggle Texts</button>
+  <p v-bind="cssScope">just some texts</p>
 </template>
