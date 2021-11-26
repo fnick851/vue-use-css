@@ -58,7 +58,7 @@ const css = /*css*/ `
 </template>
 ```
 
-Contrary to Vue SFC's `<style scoped>` block, the CSS output's scope is the element where you place the `v-bind="cssScope"` directive, and also cascades to its children (as in **C**ascading **S**tyle **S**heets), based on a generated unique `data-` attribute. This is an intentional choice. Cascading is a useful feature for many.
+Contrary to Vue SFC's `<style scoped>` block, the CSS output's scope is the element where you place the `v-bind="cssScope"` directive, which also cascades to its children, based on a generated unique `data-` attribute. Cascading is a useful feature for many.
 
 Some setup allows you to import the content of a `.css` file as a string. So you could also use a separate CSS file if you want.
 
