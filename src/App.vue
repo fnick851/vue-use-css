@@ -17,3 +17,9 @@ const show = ref(true)
     <Button @click="show = !show"></Button>
   </div>
 </template>
+
+<style scoped>
+.inner {
+  font-weight: bold;
+}
+</style>
