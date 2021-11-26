@@ -1,12 +1,12 @@
 # vue-use-css
 
-This is a minimal Vue hook that processes and generates scoped CSS at runtime, making it easy to bundle CSS into JS file using any bundler. You can use it to build component (or micro frontend) that bring its own **scoped CSS that will be cleaned up once the component is unmounted**.
+This is a minimal Vue composition function that processes and generates scoped CSS at runtime, making it easy to bundle CSS into JS file using any bundler. You can use it to build component (or micro frontend) that bring its own **scoped CSS that will be cleaned up once the component is unmounted**.
 
 It is based on the [kremling](https://github.com/CanopyTax/kremling) library for React, but adapted for Vue using TypeScript. It does not include the class name helpers like Kremling does, since Vue has built-in equivalents .
 
 ## How to use
 
-You need to pass the CSS as a string to the imported hook. For writing scoped CSS, it works the same way as kremling does. You need to prepend any individual CSS selector with the `&` symbol to make it scoped. Or it will become regular global CSS.
+You need to pass the CSS as a string to the imported composition function. For writing scoped CSS, it works the same way as kremling does. You need to prepend any individual CSS selector with the `&` symbol to make it scoped. Or it will become regular global CSS.
 
 For example:
 
